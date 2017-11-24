@@ -6,12 +6,20 @@ h1 {
 	color:#03F;
 	}
 
+#resume a:link{
+	color:#03C;
+	}
+
+#resume a:visited{
+	color:#03C;
+	}
+
 #study a:link{
 	color:#03C;
-	text-decoration:none;
+	/*text-decoration:none;*/
 	}
 	
 #study a:visited{
 	color:#03C;
-	text-decoration:none;
+	/*text-decoration:none;*/
 	}
