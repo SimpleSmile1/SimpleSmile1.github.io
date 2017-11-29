@@ -34,5 +34,26 @@ get和post的区别有：①安全性，get请求的数据会显示在地址栏�
 <span>
 <p><br/><img src="http1.png" /> <img src="http2.png" /></p>
 </span>
+
+<h3>MySql扩展库</h3>
+<span>
+<p>1、mysql扩展库操作mysql数据库的步骤①获取连接$conn = mysqli_connect("localhost","root","password")，②选择数据库mysql_select_db("数据库名")③设置操作编码(建议有)④发送指令$sql="select * from 表名";$res=mysql_query($sql,$conn);⑤接收返回结果，并处理$row=mysql_fetch_row($res);⑥释放资源，关闭连接msql_free_result($res);mysql_close($conn);</p>
+<p>2、mysql_fetch_row()返回一个索引数组（推荐使用）mysql_fetch_assoc()返回一个关联数组mysql_fetch_array()返回索引数组和关联数组mysql_fetch_object()把一行数据当作一个对象返回。</p>
+</span>
+<h3>MySqli扩展库</h3>
+
+<h3>预定义全局数组(变量)</h3>
+<span>
+<p>①$_GET②$_POST③$_REQUEST④$_SERVER⑤$_ENV⑥$_FILE⑦$_COOKIE⑧$_SESSION⑨$GLOBALS</p>
+<p>(1)、$_GET实际使用:客户机(浏览器)通过超链接传送数据给服务器！如<a href="a.php?city=beijing&name=xiaoming">传送数据</a></p>
+<p>解决ie低版本中文奇数乱码的问题:方法一 : 给奇数中文加一个全角空格，然后到服务器接收时，在用trim函数去掉空格。方法二 : 使用urlencode(对中文url编码)和urldecode函数。如 ：$str = urlencode("北京好") <a href="a.php?city='.$str.'&name=xiaoming">传送数据</a></p>
+<p>$_GET也可以接收表单以get方式提交的的数据，但建议使用POST方式提交表单数据,header("Location:a.php?name=xiaoming")也是以get方式传送的</p>
+<p>判断是否收到值: 建议使用empty()函数判断，isset()函数也可以但低版本不支持。</p>
+
+<p>(2)、$_POST : 通过http post方法提交的数据，会被封装到$_POST超全局数组中。</p>
+<p>基本用法 : 客户机(浏览器)通过表单传送信息给服务器并且需要使用post方式，文件上传必须使用post方式。</p>
+
+<p>(3)、$_REQUEST可以接收POST、GET、COOKIE数据，$_REQUEST不安去，可以通过$_SERVER里的REQUEST_METHOD属性来获得是通过post或get等方法传送数据的。</p>
+</span>
 </body>
 </html>
