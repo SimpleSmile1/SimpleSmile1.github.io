@@ -80,6 +80,8 @@ get和post的区别有：①安全性，get请求的数据会显示在地址栏�
 <p>session是服务器端技术，服务器在运行时可以为每一个用户的浏览器创建一个其独享的session文件。</p>
 <p>session的基本语法(增删改查)，如何保持session①初始化session:session_start();②保持数据$_SESSION['name'] = "xiaoming";③保持的数据格式: name|s : 8:"xiaoming"，name代表键，s代表数据类型，8代表数据大小。</p>
 <p>session中可以保存double,integer,array,object,bool,string等类型</p>
+<p>session注意事项:①要使用session，都需要初始化session。②session文件中可以放入多个键值对，键不可以重复。如果我们需要取出对象，则需要实现申明一下类的定义信息。</p>
+<p>更新session就是重新设置$_SESSION['name'] = "小明";</p>
 </span>
 </body>
 </html>
