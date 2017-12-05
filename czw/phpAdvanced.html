@@ -55,5 +55,31 @@ get和post的区别有：①安全性，get请求的数据会显示在地址栏�
 
 <p>(3)、$_REQUEST可以接收POST、GET、COOKIE数据，$_REQUEST不安去，可以通过$_SERVER里的REQUEST_METHOD属性来获得是通过post或get等方法传送数据的。</p>
 </span>
+
+<h3>MVC模式</h3>
+<span>
+<p>m->model模型处理业务逻辑 。v->view视图/界面，使用php编写 。c->controller控制器，控制器的主要作用是接收用户的请求，并调用某个service方法，完成任务，然后跳转到下一个页面。</p></p>
+<p>MVC的核心思想是:强制程序员在编写项目的时候，把数据的输入、数据的输出、数据的处理分开。</p>
+</span>
+
+<h3>会话cookie</h3>
+<span>
+<p>什么是会话：打开浏览器，访问某个网站的很多页面（通过超链接），当你关闭浏览器时一个会话结束。</p>
+<p>①当浏览器访问cookie.php页面时，我们的服务器会以特定的格式回送http响应，当浏览器获取到该信息后，就会保存该cookie的信息到本机的默认文件中。</p>
+<p>②setcookie（）函数有三个参数，第一个参数为键，第二个参数为值，第三个参数为保存的时间，如果没有第三个参数，cookie就不会保存到客户端，当浏览器会话结束，cookie就失效。</p>
+<p>③cookie规定保存字符串</p>
+<p>④客户端可以保存多个键值对</p>
+<p>⑤cookie也可以保存中文，默认将会对中文进行urlencode编码</p>
+<p>⑥cookie可以给不同的键值设置不同的保存时间</p>
+<p>设置cookie:setcookie("name","aaa",time()+秒数)。获取cookie:$_COOKIE,获取指定cookie:$_COOKIE['name'].</p>
+<p>更新cookie就是重新设置cookie。删除cookie语法:①删除某一个setcookie（"key","",time()-秒数），全部删除用foreach循环进行操作foreach（$_COOKE as $key=>$val）{setcookie("$key","",time()-秒数)}</p>
+</span>
+
+<h3>session</h3>
+<span>
+<p>session是服务器端技术，服务器在运行时可以为每一个用户的浏览器创建一个其独享的session文件。</p>
+<p>session的基本语法(增删改查)，如何保持session①初始化session:session_start();②保持数据$_SESSION['name'] = "xiaoming";③保持的数据格式: name|s : 8:"xiaoming"，name代表键，s代表数据类型，8代表数据大小。</p>
+<p>session中可以保存double,integer,array,object,bool,string等类型</p>
+</span>
 </body>
 </html>
