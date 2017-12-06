@@ -55,9 +55,13 @@ get和post的区别有：①安全性，get请求的数据会显示在地址栏�
 
 <p>(3)、$_REQUEST可以接收POST、GET、COOKIE数据，$_REQUEST不安去，可以通过$_SERVER里的REQUEST_METHOD属性来获得是通过post或get等方法传送数据的。</p>
 </span>
-
+<h3>分成模式</h3>
+<span>
+<p><img src="./pagionation.png" /></p>
+</span>
 <h3>MVC模式</h3>
 <span>
+<p><img src="./mvc.jpg" /></p>
 <p>m->model模型处理业务逻辑 。v->view视图/界面，使用php编写 。c->controller控制器，控制器的主要作用是接收用户的请求，并调用某个service方法，完成任务，然后跳转到下一个页面。</p></p>
 <p>MVC的核心思想是:强制程序员在编写项目的时候，把数据的输入、数据的输出、数据的处理分开。</p>
 </span>
@@ -77,11 +81,18 @@ get和post的区别有：①安全性，get请求的数据会显示在地址栏�
 
 <h3>session</h3>
 <span>
-<p>session是服务器端技术，服务器在运行时可以为每一个用户的浏览器创建一个其独享的session文件。</p>
+<p>session是服务器端技术，服务器在运行时可以为每一个用户的浏览器创建一个其独享的session文件。注意：一个会话对应一个session文件。</p>
 <p>session的基本语法(增删改查)，如何保持session①初始化session:session_start();②保持数据$_SESSION['name'] = "xiaoming";③保持的数据格式: name|s : 8:"xiaoming"，name代表键，s代表数据类型，8代表数据大小。</p>
 <p>session中可以保存double,integer,array,object,bool,string等类型</p>
 <p>session注意事项:①要使用session，都需要初始化session。②session文件中可以放入多个键值对，键不可以重复。如果我们需要取出对象，则需要实现申明一下类的定义信息。</p>
 <p>更新session就是重新设置$_SESSION['name'] = "小明";</p>
+<p>删除session:①删除某一个键值用unset（）函数，删除所有键值用session_destory()函数</p>
+<p>当用户打开浏览器，访问某个网站时操作session时，服务器就会在服务器的磁盘为该浏览器分配一个保存session信息的文件，该文件被这个浏览器独自访问。</p>
+
+<p>session和cookie的区别①cookie是把用户的数据写给用户的浏览器。②session技术是把用户的数据写到用户独占的$_SESSION中，存在服务器的某个路径的文件中。</p>
+<p>服务器怎样实现，一个session文件为一次会话服务的，原理是<br/><img src="./session.png" /></p>
+<p>如果客户禁用cookie后，怎么实现session技术共享多个页面<br/><img src="./jingyongcookie.png" /></p>
+<p>验证码的原理也是用的session技术，登录时是否保留登录名或密码用的是cookie原理。</p>
 </span>
 </body>
 </html>
