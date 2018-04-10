@@ -1,2 +1,6 @@
 InputStreamReader inr = new InputStreamReader(System.in);
 BufferReader br = new BufferReader(inr);
+ByteArrayOutputStream baos = new ByteArrayOutputStream();运行此句会自动在内存里创建一个ByteArray数组
+DataOutputStream dos = new DataOutputStream(baos);
+ByteArrayInputStream bis = new ByteArrayInputStream(baos.toByteArray());
+DataInputStream dis = new DataInputStream(bis);
