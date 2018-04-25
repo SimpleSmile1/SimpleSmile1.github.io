@@ -72,7 +72,7 @@ class SyncStack{
 	int index = 0;
 	
 	public synchronized void push(Bun bun){
-		if(index == arrBun.length){
+		while(index == arrBun.length){
 			try{
 				this.wait();
 			}catch(InterruptedException e){
@@ -85,7 +85,7 @@ class SyncStack{
 	}
 	
 	public synchronized Bun pop(){
-		if(index == 0){
+		while(index == 0){
 			try{
 				this.wait();
 			}catch(InterruptedException e){
