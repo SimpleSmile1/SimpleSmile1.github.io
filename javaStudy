@@ -47,3 +47,87 @@ public class TestDeadLock implements Runnable{
     t2.start();
   }
 }
+
+
+消费者生产者
+public class ProducerConsumer{
+	public static void main(String[] args){
+		SyncStack ss = new SyncStack();
+		Producer pp = new Producer(ss);
+		Consumer cc = new Consumer(ss);
+		new Thread(pp).start();
+		new Thread(cc).start();
+	}
+}
+
+class Bun{
+	int id;
+	Bun(int id){
+		this.id = id;
+	}
+}
+
+class SyncStack{
+	Bun[] arrBun = new Bun[6];
+	int index = 0;
+	
+	public synchronized void push(Bun bun){
+		if(index == arrBun.length){
+			try{
+				this.wait();
+			}catch(InterruptedException e){
+				e.printStackTrace();
+			}
+		}
+		this.notify();
+		arrBun[index] = bun;
+		index ++;
+	}
+	
+	public synchronized Bun pop(){
+		if(index == 0){
+			try{
+				this.wait();
+			}catch(InterruptedException e){
+				e.printStackTrace();
+			}
+			
+		}
+		index --;
+		this.notify();
+		return arrBun[index];
+	}
+}
+
+class Producer implements Runnable{
+	SyncStack ss = null;
+	Producer(SyncStack ss){
+		this.ss = ss;
+	}
+	public void run(){
+		for(int i=0; i<20; i++){
+			Bun bun = new Bun(i);
+			ss.push(bun);
+			System.out.println("生产:"+bun);
+		}
+		}
+	}
+}
+
+class Consumer implements Runnable{
+	SyncStack ss = null;
+	Consumer(SyncStack ss){
+		this.ss = ss;
+	}
+	public void run(){
+		for(int i=0; i<20; i++){
+			Bun bun = ss.pop();
+			System.out.println("消费:"+bun);
+		}
+		try{
+			Thread.sleep();
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
+	}
+}
